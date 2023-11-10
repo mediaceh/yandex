@@ -1,4 +1,4 @@
-[https://www.youtube.com/watch?v=tfvm2k5c9JI](https://www.youtube.com/live/tfvm2k5c9JI?si=YEmeBtnCprBcUyb0&t=1289)https://www.youtube.com/live/tfvm2k5c9JI?si=YEmeBtnCprBcUyb0&t=1289
+[Собеседование в Яндекс. Алгоритмы](https://www.youtube.com/live/tfvm2k5c9JI?si=YEmeBtnCprBcUyb0&t=1289)https://www.youtube.com/live/tfvm2k5c9JI?si=YEmeBtnCprBcUyb0&t=1289
 
 NonDecreasingPowArray.php - решение первой задачи из видео
 

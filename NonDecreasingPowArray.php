@@ -21,7 +21,7 @@ function isDataCorrect(array $arr, array $powArr): void
 {
     foreach ($arr as $value) {
         if (
-            count(array_keys($arr, abs($value))) + ($value < 0 ? count(array_keys($arr, $value)) : 0) 
+            count(array_keys($arr, abs($value))) + ($value < 0 ? count(array_keys($arr, $value)) : 0)
             != count(array_keys($powArr, $value**2))
         ) {
             echo 'Data is not correct';
@@ -72,6 +72,53 @@ function processArray(array &$inputArr): void
     }
 }
 
+
+function processArrayV2(array $inputArr): array
+{
+    $outputArray = [];
+    $inputLength = count($inputArr);
+    $leftKey = 0;
+    $rightKey = $inputLength - 1;
+
+    foreach ($inputArr as $key => $value) {
+        if (
+            $rightKey > $leftKey && ($inputArr[$rightKey] > abs($inputArr[$leftKey]))
+        ) {
+            $outputArray[] = $inputArr[$rightKey]**2;
+            $rightKey--;
+        } else {
+            $outputArray[] = $inputArr[$leftKey]**2;
+            $leftKey++;
+        }
+    }
+
+    return array_reverse($outputArray);
+}
+
+function processArrayV3(array $inputArr): array
+{
+    $outputArray = [];
+    $inputLength = count($inputArr);
+    $firstNotNegativeIndex = getFirstNotNegativeIndex($inputArr);
+    $leftKey = $firstNotNegativeIndex - 1;
+    $rightKey = $firstNotNegativeIndex;
+
+    foreach ($inputArr as $key => $value) {
+        if (
+            $rightKey >= $inputLength || $leftKey >= 0 && (abs($inputArr[$leftKey]) < $inputArr[$rightKey])
+        ) {
+            $outputArray[] = $inputArr[$leftKey]**2;
+            $leftKey--;
+        } else {
+            $outputArray[] = $inputArr[$rightKey]**2;
+            $rightKey++;
+        }
+    }
+
+    return $outputArray;
+}
+
+
 function generateNonDecreasingSequence(int $sequenceLength, int $minSequenceValue, int $maxSequenceValue): array
 {
     $inputArr = $sequenceLength ? [$minSequenceValue] : [];
@@ -90,7 +137,7 @@ $inputArr = generateNonDecreasingSequence(
 isNonDecreasingSequence($inputArr);
 $testInputArr = $inputArr;
 print_r($inputArr);
-processArray($inputArr);
+$inputArr = processArrayV3($inputArr);
 print_r($inputArr);
 isNonDecreasingSequence($inputArr);
 isDataCorrect($testInputArr, $inputArr);

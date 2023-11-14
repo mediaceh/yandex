@@ -9,6 +9,7 @@ const MAX_SEQUENCE_VALUE = 1000;
 function isNonDecreasingSequence(array $arr): void
 {
     $length = count($arr);
+    
     for ($i = 1; $i < $length; $i++) {
         if ($arr[$i] < $arr[$i -1]) {
             echo 'Sequence is not non-decreasing';
@@ -37,6 +38,7 @@ function getFirstNotNegativeIndex(array $inputArr): int
     $leftSearchBound = 0;
     $rightSearchBound = $inputLength -1;
     $firstNotNegativeIndex = $inputLength;
+
     while (($rightSearchBound - $leftSearchBound) >= 0) {
         if ($inputArr[$middle] >= 0) {
             $rightSearchBound = $middle -1;
@@ -58,6 +60,7 @@ function processArray(array &$inputArr): void
     $negativeLength = count($negativeArray);
     $negativeKey = 0;
     $positiveKey = $firstNotNegativeIndex;
+    
     foreach ($inputArr as $key => $value) {
         if (
             $positiveKey >= $inputLength
@@ -122,6 +125,7 @@ function processArrayV3(array $inputArr): array
 function generateNonDecreasingSequence(int $sequenceLength, int $minSequenceValue, int $maxSequenceValue): array
 {
     $inputArr = $sequenceLength ? [$minSequenceValue] : [];
+    
     for ($i = 1; $i < $sequenceLength; $i++) {
         $inputArr[$i] = rand($inputArr[($i - 1)], $maxSequenceValue);
     }
